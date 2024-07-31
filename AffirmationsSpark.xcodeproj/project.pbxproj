@@ -52,7 +52,8 @@
 			isa = PBXGroup;
 			children = (
 				E20BF1052C5AD1C100D43927 /* AffirmationsSparkApp.swift */,
-				E20BF1072C5AD1C100D43927 /* ContentView.swift */,
+				E20BF1152C5AD56F00D43927 /* Views */,
+				E2674D7F2C5AD59600D17CFC /* ViewModels */,
 				E20BF1092C5AD1C200D43927 /* Assets.xcassets */,
 				E20BF10B2C5AD1C200D43927 /* Preview Content */,
 			);
@@ -65,6 +66,21 @@
 				E20BF10C2C5AD1C200D43927 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E20BF1152C5AD56F00D43927 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E20BF1072C5AD1C100D43927 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E2674D7F2C5AD59600D17CFC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
