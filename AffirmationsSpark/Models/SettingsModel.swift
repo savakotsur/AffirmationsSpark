@@ -5,7 +5,6 @@
 //  Created by Савелий Коцур on 01.08.2024.
 //
 
-//import Foundation
 import SwiftUI
 
 enum Category: String, CaseIterable, Identifiable {

@@ -17,10 +17,12 @@ struct CarouselView: View {
                     Text(phrase)
                         .padding()
                         .rotationEffect(.degrees(-90))
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height)
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .frame(minWidth: UIScreen.main.bounds.height - 200, minHeight: UIScreen.main.bounds.width)
+            .frame(minWidth: UIScreen.main.bounds.height, minHeight: UIScreen.main.bounds.width)
             .rotationEffect(.degrees(90))
         }
     }

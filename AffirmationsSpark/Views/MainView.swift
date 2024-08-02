@@ -8,39 +8,38 @@
 import SwiftUI
 
 struct MainView: View {
-    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
+    @StateObject private var mainVM = MainViewModel()
     @AppStorage("affirmationsColor") private var backgroundColor: BackgroundColor = .blue
-    let phrases = ["lsldflsa", "sadkosdoa", "sldalsd,ao", "samdosmdaosmd", "sadsmdoasodma"]
+    @State private var isSettingsOpened = false
     
     var body: some View {
-        if hasSeenOnboarding {
-            VStack {
-                HStack {
+            ZStack {
+                CarouselView(phrases: mainVM.affirmations)
+                    .padding(.leading)
+                VStack {
+                    HStack (alignment: .top) {
+                        Spacer()
+                        Button(action: {
+                            isSettingsOpened.toggle()
+                        }, label: {
+                            Image(systemName: "slider.horizontal.3")
+                                .foregroundColor(.black)
+                                .imageScale(.large)
+                                .frame(maxWidth: 35, maxHeight: 35)
+                                .background(backgroundColor.color.asGradient())
+                                .cornerRadius(5)
+                        })
+                        .padding()
+                    }
+                    .frame(maxWidth: UIScreen.main.bounds.width)
+                    .padding(.trailing)
                     Spacer()
-                    Button(action: {
-                        print("1")
-                    }, label: {
-                        Image(systemName: "slider.horizontal.3")
-                            .foregroundColor(.black)
-                            .frame(maxWidth: 30, maxHeight: 30)
-                            .background(backgroundColor.color.asGradient())
-                            .cornerRadius(5)
-                    })
                 }
-                .frame(maxWidth: UIScreen.main.bounds.width)
-                .padding(.trailing)
-                CarouselView(phrases: phrases)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(backgroundColor.color.asGradient())
-        } else {
-            OnboardingViewsContainer()
-        }
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
+            .fullScreenCover(isPresented: $isSettingsOpened) {
+                SettingsView(mainVM: mainVM)
+            }.presentationBackground(.black.opacity(0.5))
     }
 }

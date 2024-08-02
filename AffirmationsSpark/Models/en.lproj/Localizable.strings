@@ -20,3 +20,7 @@
 "red" = "Red";
 "male" = "Male";
 "female" = "Female";
+"settings" = "Settings";
+"bgcolor" = "Background color";
+"language_text" = "The language can only be changed in the system settings";
+"go_to_settings" = "Go to settings";

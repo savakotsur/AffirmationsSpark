@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct AffirmationsSparkApp: App {
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
+    
+    init() {
+        DispatchQueue.main.async {
+            DataPreloader.preloadData()
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            if hasSeenOnboarding {
+                MainView()
+            } else {
+                OnboardingViewsContainer()
+            }
         }
     }
 }
