@@ -18,6 +18,9 @@ struct MainView: View {
             ZStack {
                 CarouselView(phrases: mainVM.affirmations)
                     .padding(.leading)
+                    .onAppear {
+                        mainVM.fetchAffirmations()
+                    }
                 VStack {
                     HStack (alignment: .top) {
                         Spacer()

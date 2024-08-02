@@ -17,7 +17,6 @@ class MainViewModel: ObservableObject {
     init() {
         realm = try! Realm()
         self.selectedLanguage = Locale.current.language.languageCode?.identifier ?? "en"
-        fetchAffirmations()
     }
     
     func fetchAffirmations() {
