@@ -43,10 +43,12 @@ struct OnboardingViewsContainer: View {
                 
             }) {
                 Text(currentStep < 2 ? "next_button".localized : "start_button".localized)
+                    .fontDesign(.serif)
                     .padding()
-                    .background(Color.blue)
+                    .frame(maxWidth: .infinity)
+                    .background(.pink)
                     .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .cornerRadius(100)
             }
             .padding()
         }

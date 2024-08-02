@@ -12,25 +12,10 @@ struct SettingsView: View {
     @AppStorage("affirmationsCategory") private var selectedCategory: Category = .love
     @AppStorage("affirmationsColor") private var selectedBackgroundColor: BackgroundColor = .blue
     @AppStorage("affirmationsGender") private var selectedGender: Gender = .male
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.openURL) var openURL
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                Button(action: {
-                    mainVM.fetchAffirmations()
-                    dismiss()
-                }, label: {
-                    Image(systemName: "xmark")
-                        .foregroundColor(.black)
-                        .imageScale(.large)
-                        .frame(maxWidth: 35, maxHeight: 35)
-                        .background(.gray)
-                        .cornerRadius(100)
-                })
-                .padding()
-            }
             Form {
                 Section(header: Text("settings".localized)) {
                     Picker("category".localized, selection: $selectedCategory) {
@@ -50,11 +35,19 @@ struct SettingsView: View {
                             Text(gender.displayName.localized).tag(gender)
                         }
                     }
-                    Text("language_text".localized)
-                    Link("go_to_settings".localized, destination: URL(string: UIApplication.openSettingsURLString)!)
-                        .padding()
-                        .font(.subheadline)
                 }
+                Section(header: Text("language".localized)) {
+                    Text("language_text".localized)
+                    Button("go_to_settings".localized) {
+                        openURL(URL(string: UIApplication.openSettingsURLString)!)
+                    }
+                }
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                CloseButton()
             }
         }
     }

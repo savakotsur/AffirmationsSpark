@@ -13,15 +13,17 @@ struct OnboardingColorView: View {
     var body: some View {
         VStack {
             Text("choose_color".localized)
-                .font(.largeTitle)
+                .font(.title)
+                .fontDesign(.serif)
                 .padding()
             
             Picker("color".localized, selection: $selectedBackgroundColor) {
                 ForEach(BackgroundColor.allCases) { color in
                     Text(color.displayName.localized).tag(color)
+                        .fontDesign(.serif)
                 }
             }
-            .pickerStyle(SegmentedPickerStyle())
+            .pickerStyle(InlinePickerStyle())
             .padding()
         }
     }

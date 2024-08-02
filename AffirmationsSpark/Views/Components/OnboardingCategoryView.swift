@@ -13,15 +13,17 @@ struct OnboardingCategoryView: View {
     var body: some View {
         VStack {
             Text("choose_category".localized)
-                .font(.largeTitle)
+                .font(.title)
+                .fontDesign(.serif)
                 .padding()
             
             Picker("category".localized, selection: $selectedCategory) {
                 ForEach(Category.allCases) { category in
                     Text(category.displayName.localized).tag(category)
+                        .fontDesign(.serif)
                 }
             }
-            .pickerStyle(SegmentedPickerStyle())
+            .pickerStyle(InlinePickerStyle())
             .padding()
         }
     }

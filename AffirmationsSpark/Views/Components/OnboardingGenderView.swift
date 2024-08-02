@@ -13,15 +13,17 @@ struct OnboardingGenderView: View {
     var body: some View {
         VStack {
             Text("choose_gender".localized)
-                .font(.largeTitle)
+                .font(.title)
+                .fontDesign(.serif)
                 .padding()
             
             Picker("gender".localized, selection: $selectedGender) {
                 ForEach(Gender.allCases) { gender in
                     Text(gender.displayName.localized).tag(gender)
+                        .fontDesign(.serif)
                 }
             }
-            .pickerStyle(SegmentedPickerStyle())
+            .pickerStyle(InlinePickerStyle())
             .padding()
         }
     }
