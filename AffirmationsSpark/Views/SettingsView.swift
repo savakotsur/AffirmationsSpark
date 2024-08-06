@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject var mainVM: MainViewModel
     @AppStorage("affirmationsCategory") private var selectedCategory: Category = .love
     @AppStorage("affirmationsColor") private var selectedBackgroundColor: BackgroundColor = .blue
     @AppStorage("affirmationsGender") private var selectedGender: Gender = .male

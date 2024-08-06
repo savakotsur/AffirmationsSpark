@@ -39,7 +39,7 @@ struct MainView: View {
                                 )
                         })
                         .navigationDestination(for: String.self, destination: {_ in 
-                        SettingsView(mainVM: mainVM)
+                        SettingsView()
                     })
                     .padding()
                     }
@@ -56,7 +56,7 @@ struct MainView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(backgroundColor.color.asGradient())
             .fullScreenCover(isPresented: $isSettingsOpened) {
-                SettingsView(mainVM: mainVM)
+                SettingsView()
             }.presentationBackground(.black.opacity(0.5))
         }
     }
